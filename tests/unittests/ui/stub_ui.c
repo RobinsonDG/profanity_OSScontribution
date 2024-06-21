@@ -1093,7 +1093,7 @@ cons_autoaway_setting(void)
 {
 }
 void
-cons_reconnect_setting(void)
+cons_autoreconnect_setting(void)
 {
 }
 void

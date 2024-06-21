@@ -101,7 +101,7 @@ static char* _wintitle_autocomplete(ProfWin* window, const char* const input, gb
 static char* _inpblock_autocomplete(ProfWin* window, const char* const input, gboolean previous);
 static char* _time_autocomplete(ProfWin* window, const char* const input, gboolean previous);
 static char* _receipts_autocomplete(ProfWin* window, const char* const input, gboolean previous);
-static char* _reconnect_autocomplete(ProfWin* window, const char* const input, gboolean previous);
+static char* _autoreconnect_autocomplete(ProfWin* window, const char* const input, gboolean previous);
 static char* _help_autocomplete(ProfWin* window, const char* const input, gboolean previous);
 static char* _wins_autocomplete(ProfWin* window, const char* const input, gboolean previous);
 static char* _tls_autocomplete(ProfWin* window, const char* const input, gboolean previous);
@@ -231,7 +231,7 @@ static Autocomplete time_format_ac;
 static Autocomplete resource_ac;
 static Autocomplete inpblock_ac;
 static Autocomplete receipts_ac;
-static Autocomplete reconnect_ac;
+static Autocomplete autoreconnect_ac;
 #ifdef HAVE_LIBGPGME
 static Autocomplete pgp_ac;
 static Autocomplete pgp_log_ac;
@@ -886,8 +886,8 @@ cmd_ac_init(void)
     autocomplete_add(receipts_ac, "send");
     autocomplete_add(receipts_ac, "request");
 
-    reconnect_ac = autocomplete_new();
-    autocomplete_add(reconnect_ac, "now");
+    autoreconnect_ac = autocomplete_new();
+    autocomplete_add(autoreconnect_ac, "now");
 
 #ifdef HAVE_LIBGPGME
     pgp_ac = autocomplete_new();
@@ -1372,7 +1372,7 @@ cmd_ac_init(void)
     g_hash_table_insert(ac_funcs, "/plugins", _plugins_autocomplete);
     g_hash_table_insert(ac_funcs, "/presence", _presence_autocomplete);
     g_hash_table_insert(ac_funcs, "/receipts", _receipts_autocomplete);
-    g_hash_table_insert(ac_funcs, "/reconnect", _reconnect_autocomplete);
+    g_hash_table_insert(ac_funcs, "/autoreconnect", _autoreconnect_autocomplete);
     g_hash_table_insert(ac_funcs, "/resource", _resource_autocomplete);
     g_hash_table_insert(ac_funcs, "/role", _role_autocomplete);
     g_hash_table_insert(ac_funcs, "/rooms", _rooms_autocomplete);
@@ -1675,7 +1675,7 @@ cmd_ac_reset(ProfWin* window)
     autocomplete_reset(resource_ac);
     autocomplete_reset(inpblock_ac);
     autocomplete_reset(receipts_ac);
-    autocomplete_reset(reconnect_ac);
+    autocomplete_reset(autoreconnect_ac);
 #ifdef HAVE_LIBGPGME
     autocomplete_reset(pgp_ac);
     autocomplete_reset(pgp_log_ac);
@@ -1858,7 +1858,7 @@ cmd_ac_uninit(void)
     autocomplete_free(resource_ac);
     autocomplete_free(inpblock_ac);
     autocomplete_free(receipts_ac);
-    autocomplete_free(reconnect_ac);
+    autocomplete_free(autoreconnect_ac);
 #ifdef HAVE_LIBGPGME
     autocomplete_free(pgp_ac);
     autocomplete_free(pgp_log_ac);
@@ -3604,10 +3604,10 @@ _receipts_autocomplete(ProfWin* window, const char* const input, gboolean previo
 }
 
 static char*
-_reconnect_autocomplete(ProfWin* window, const char* const input, gboolean previous)
+_autoreconnect_autocomplete(ProfWin* window, const char* const input, gboolean previous)
 {
     char* result = NULL;
-    result = autocomplete_param_with_ac(input, "/reconnect", reconnect_ac, TRUE, previous);
+    result = autocomplete_param_with_ac(input, "/autoreconnect", autoreconnect_ac, TRUE, previous);
     return result;
 }
 

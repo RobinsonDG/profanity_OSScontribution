@@ -329,7 +329,7 @@ void cons_receipts_setting(void);
 void cons_log_setting(void);
 void cons_logging_setting(void);
 void cons_autoaway_setting(void);
-void cons_reconnect_setting(void);
+void cons_autoreconnect_setting(void);
 void cons_autoping_setting(void);
 void cons_autoconnect_setting(void);
 void cons_room_cache_setting(void);

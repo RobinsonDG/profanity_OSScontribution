@@ -1933,19 +1933,19 @@ static const struct cmd_t command_defs[] = {
               { "send on|off", "Whether or not to send a receipt if one has been requested with a received message." })
     },
 
-    { CMD_PREAMBLE("/reconnect",
-                   parse_args, 1, 1, &cons_reconnect_setting)
-      CMD_MAINFUNC(cmd_reconnect)
+    { CMD_PREAMBLE("/autoreconnect",
+                   parse_args, 1, 1, &cons_autoreconnect_setting)
+      CMD_MAINFUNC(cmd_autoreconnect)
       CMD_TAGS(
               CMD_TAG_CONNECTION)
       CMD_SYN(
-              "/reconnect <seconds>",
-              "/reconnect now")
+              "/autoreconnect <seconds>",
+              "/autoreconnect now")
       CMD_DESC(
-              "Set the reconnect attempt interval for when the connection is lost or immediately trigger a reconnect.")
+              "Set the autoreconnect attempt interval for when the connection is lost or immediately trigger an autoreconnect.")
       CMD_ARGS(
-              { "<seconds>", "Number of seconds before attempting to reconnect, a value of 0 disables reconnect." },
-              { "now", "Immediately trigger a reconnect." })
+              { "<seconds>", "Number of seconds before attempting to autoreconnect, a value of 0 disables autoreconnect." },
+              { "now", "Immediately trigger an autoreconnect." })
     },
 
     { CMD_PREAMBLE("/autoping",

@@ -121,7 +121,7 @@ gboolean cmd_outtype(ProfWin* window, const char* const command, gchar** args);
 gboolean cmd_prefs(ProfWin* window, const char* const command, gchar** args);
 gboolean cmd_priority(ProfWin* window, const char* const command, gchar** args);
 gboolean cmd_quit(ProfWin* window, const char* const command, gchar** args);
-gboolean cmd_reconnect(ProfWin* window, const char* const command, gchar** args);
+gboolean cmd_autoreconnect(ProfWin* window, const char* const command, gchar** args);
 gboolean cmd_room(ProfWin* window, const char* const command, gchar** args);
 gboolean cmd_rooms(ProfWin* window, const char* const command, gchar** args);
 gboolean cmd_bookmark(ProfWin* window, const char* const command, gchar** args);

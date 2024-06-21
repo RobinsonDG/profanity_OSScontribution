@@ -6423,7 +6423,7 @@ cmd_log(ProfWin* window, const char* const command, gchar** args)
 }
 
 gboolean
-cmd_reconnect(ProfWin* window, const char* const command, gchar** args)
+cmd_autoreconnect(ProfWin* window, const char* const command, gchar** args)
 {
     char* value = args[0];
 
@@ -6434,9 +6434,9 @@ cmd_reconnect(ProfWin* window, const char* const command, gchar** args)
     } else if (strtoi_range(value, &intval, 0, INT_MAX, &err_msg)) {
         prefs_set_reconnect(intval);
         if (intval == 0) {
-            cons_show("Reconnect disabled.", intval);
+            cons_show("Autoreconnect disabled.", intval);
         } else {
-            cons_show("Reconnect interval set to %d seconds.", intval);
+            cons_show("Autoreconnect interval set to %d seconds.", intval);
         }
     } else {
         cons_show(err_msg);

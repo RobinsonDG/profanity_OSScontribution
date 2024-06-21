@@ -2039,15 +2039,15 @@ cons_show_presence_prefs(void)
 }
 
 void
-cons_reconnect_setting(void)
+cons_autoreconnect_setting(void)
 {
-    gint reconnect_interval = prefs_get_reconnect();
-    if (reconnect_interval == 0) {
-        cons_show("Reconnect interval (/reconnect) : OFF");
-    } else if (reconnect_interval == 1) {
-        cons_show("Reconnect interval (/reconnect) : 1 second");
+    gint autoreconnect_interval = prefs_get_reconnect();
+    if (autoreconnect_interval == 0) {
+        cons_show("autoReconnect interval (/autoreconnect) : OFF");
+    } else if (autoreconnect_interval == 1) {
+        cons_show("autoReconnect interval (/autoreconnect) : 1 second");
     } else {
-        cons_show("Reconnect interval (/reconnect) : %d seconds", reconnect_interval);
+        cons_show("autoReconnect interval (/autoreconnect) : %d seconds", autoreconnect_interval);
     }
 }
 
@@ -2184,7 +2184,7 @@ cons_show_connection_prefs(void)
 {
     cons_show("Connection preferences:");
     cons_show("");
-    cons_reconnect_setting();
+    cons_autoreconnect_setting();
     cons_autoping_setting();
     cons_autoconnect_setting();
     cons_rooms_cache_setting();
